@@ -1,1 +1,11 @@
-pandas
+# 评分卡相关
+scorecardpy
+optbinning
+toad
+
+# 数据库（避免编译版）
+psycopg2-binary
+pymysql
+
+# 其他纯 python 包
+requests
