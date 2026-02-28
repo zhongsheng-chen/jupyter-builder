@@ -1,0 +1,36 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 备份文件
+*.bak
+*.backup
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+
+# Docker 相关（但保留 Dockerfile 和 docker-bake.hcl）
+# 不忽略 Dockerfile 和 docker-bake.hcl
+# 但可以忽略临时构建文件
+.dockerignore
