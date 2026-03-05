@@ -55,23 +55,40 @@ RUN rm -rf "/home/${NB_USER}/.cache/"
 # =====================================================
 # 使用 mamba 安装科学计算核心库（以 root 用户执行）
 # =====================================================
-
+# 先升级 mamba 以避免内存错误
 RUN mamba update --yes mamba && \
-    mamba clean -afy
+    mamba clean -afy  # 升级后立即清
 
+# 分步安装：先安装核心包，再安装可视化包
 RUN mamba install --yes \
-        numpy \
-        pandas \
-        scipy \
-        scikit-learn \
+        numpy=1.26.4 \
+        pandas=2.0.3 \
+        scikit-learn=1.3.2 \
+        SQLAlchemy=1.4.54 \
         statsmodels \
-        xgboost \
-        lightgbm \
-        matplotlib \
-        seaborn \
-    && mamba clean --all -f -y \
+        scipy \
     && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}"
+
+RUN mamba install --yes \
+        xgboost=3.1.1 \
+        lightgbm=4.3.0 \
+        catboost=1.2.8 \
+        onnx=1.19.1 \
+    && fix-permissions "${CONDA_DIR}" \
+    && fix-permissions "/home/${NB_USER}"
+
+RUN mamba install --yes \
+        matplotlib \
+        seaborn \
+    && fix-permissions "${CONDA_DIR}" \
+    && fix-permissions "/home/${NB_USER}"
+
+# 单独清理（使用 conda 而不是 mamba 避免内存错误）
+RUN conda clean --all -f -y && \
+    rm -rf /home/jovyan/.mamba/pkgs/* && \
+    rm -rf /opt/conda/pkgs/*.tar.bz2 && \
+    rm -rf /opt/conda/pkgs/.trash
 
 # =====================================================
 # 使用 pip 安装额外 Python 依赖（以 jovyan 用户执行）

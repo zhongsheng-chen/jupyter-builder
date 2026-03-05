@@ -8,4 +8,12 @@ psycopg2-binary
 pymysql
 
 # 其他纯 python 包
-requests
+Faker==25.0.1
+bentoml==1.4.28
+requests==2.31.0
+joblib==1.4.2
+psutil==7.1.1
+pytz==2024.2
+PyYAML==6.0.3
+python-dateutil==2.9.0
+sklearn2pmml==0.123.1

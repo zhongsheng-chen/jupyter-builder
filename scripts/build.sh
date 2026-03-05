@@ -15,8 +15,8 @@ NC='\033[0m'
 # 默认参数
 # =====================================================
 PYTHON_MAJOR_MINOR="3.10"
-PYTHON_VERSION="3.10.12"
-UBUNTU_VERSION="22.04"
+PYTHON_VERSION="3.10.20"
+UBUNTU_VERSION="24.04"
 TAG_SUFFIX=""
 PUSH=false
 PLATFORMS="linux/amd64,linux/arm64"

@@ -9,11 +9,11 @@ variable "PYTHON_MAJOR_MINOR" {
 
 variable "PYTHON_VERSION" {
   description = "Exact Python version for final image (e.g. 3.10.12)"
-  default     = "3.10.12"
+  default     = "3.10.20"
 }
 
 variable "UBUNTU_VERSION" {
-  default = "22.04"
+  default = "24.04"
 }
 
 variable "REGISTRY" {
